@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="conrujam"
+run/main_scene="uid://3d1j3jo351lo"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
