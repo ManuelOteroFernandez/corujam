@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwhvwn6eiwc6o"]
+
+[ext_resource type="PackedScene" uid="uid://wudv18jejrx8" path="res://mundo/zari.tscn" id="1_hpnu0"]
+[ext_resource type="PackedScene" uid="uid://bmexsbjljdkbk" path="res://mundo/loseta.tscn" id="2_yh4q5"]
+
+[node name="Nivel" type="Node2D"]
+
+[node name="zari" parent="." instance=ExtResource("1_hpnu0")]
+
+[node name="grid" type="Node2D" parent="."]
+
+[node name="loseta" parent="grid" instance=ExtResource("2_yh4q5")]
+position = Vector2(23, 725)
