@@ -6,9 +6,6 @@
 [node name="Nivel" type="Node2D"]
 
 [node name="zari" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("1_hpnu0")]
-v = 600.0
-v_salto = 700.0
-g = 1200.0
 tilemap = NodePath("../TileMap")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
