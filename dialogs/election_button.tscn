@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4lyfaxkqxq0b"]
+
+[ext_resource type="Script" uid="uid://d1lea22ekh2la" path="res://dialogs/election_button.gd" id="1_063mc"]
+
+[node name="ElectionButton" type="Button"]
+offset_right = 24.0
+offset_bottom = 8.0
+text = "Soy un texto prueba"
+script = ExtResource("1_063mc")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
