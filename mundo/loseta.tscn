@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmexsbjljdkbk"]
+
+[ext_resource type="Texture2D" uid="uid://ca1rpmexlo78h" path="res://arte/placeholders/tilesetPlaceholder512.png" id="1_1syif"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5t08"]
+size = Vector2(512, 512)
+
+[node name="loseta" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1syif")
+region_enabled = true
+region_rect = Rect2(0, 0, 512, 512)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t5t08")

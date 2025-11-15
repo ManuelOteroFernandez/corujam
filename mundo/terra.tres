@@ -1,0 +1,32 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://pa4mq2frfs6r"]
+
+[ext_resource type="Texture2D" uid="uid://ca1rpmexlo78h" path="res://arte/placeholders/tilesetPlaceholder512.png" id="1_m8480"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_68bkh"]
+texture = ExtResource("1_m8480")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+
+[resource]
+tile_size = Vector2i(512, 512)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_68bkh")
