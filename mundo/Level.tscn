@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://imikr3ovhf7p"]
+[gd_scene load_steps=14 format=4 uid="uid://imikr3ovhf7p"]
 
 [ext_resource type="TileSet" uid="uid://j62veqj8n3nn" path="res://mundo/tileset.tres" id="1_2hgfj"]
 [ext_resource type="PackedScene" uid="uid://wudv18jejrx8" path="res://mundo/zari.tscn" id="2_2hgfj"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://dt7tm5e5v7yhd" path="res://arte/fondo/Layer1.png" id="9_so5h8"]
 [ext_resource type="Texture2D" uid="uid://djryub35c3uk6" path="res://arte/fondo/DesertSunset.png" id="10_xublk"]
 [ext_resource type="PackedScene" uid="uid://cpem271s6a1xu" path="res://characters/abridor_puertas.tscn" id="11_al70p"]
+[ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="12_so5h8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3kkpk"]
+size = Vector2(1021, 96)
 
 [node name="Node2D" type="Node2D"]
 
@@ -31,7 +35,7 @@ rendering_quadrant_size = 512
 metadata/_edit_lock_ = true
 
 [node name="zari" parent="." node_paths=PackedStringArray("tilemap") groups=["player"] instance=ExtResource("2_2hgfj")]
-position = Vector2(8288, -705)
+position = Vector2(16320, 1693)
 v = 1500.0
 v_salto = 700.0
 g = 3000.0
@@ -97,5 +101,18 @@ texture = ExtResource("10_xublk")
 [node name="Character" parent="." instance=ExtResource("5_5lnrp")]
 position = Vector2(9020, 26)
 
-[node name="Character2" parent="." instance=ExtResource("11_al70p")]
+[node name="Character2" parent="." node_paths=PackedStringArray("porta1") instance=ExtResource("11_al70p")]
 position = Vector2(15444, 1524)
+porta1 = NodePath("../bloqueo")
+
+[node name="bloqueo" type="StaticBody2D" parent="."]
+position = Vector2(12400, 9815)
+
+[node name="Sprite2D" type="Sprite2D" parent="bloqueo"]
+position = Vector2(398.49994, -38.500454)
+scale = Vector2(7.960932, 0.7265603)
+texture = ExtResource("12_so5h8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bloqueo"]
+position = Vector2(400.5, -38)
+shape = SubResource("RectangleShape2D_3kkpk")
