@@ -12,29 +12,32 @@ var next_line: DialogLine
 
 func start_dialog():
 	var tween = get_tree().create_tween()
-	scale = Vector2(1,1)
+	scale = Vector2(1, 1)
 	tween.tween_property(self,"modulate:a",1, 1)
 	
+	current_line = null
+	next_line = null
 	
+	show_next_line()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$CharacterLeft.texture = character_img_left
 	$CharacterRight.texture = character_img_right
 	
-	show_next_line()
+func hide_dialog():
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate:a", 0, 1)
+	await tween.finished
+	scale = Vector2.ZERO
 	
 func show_next_line():
 	if current_line == null:
-		current_line = dialog_line_array[0]
-		next_line = get_line(current_line.next_line_id)
+		next_line = dialog_line_array[0]
+	
 	
 	if next_line == null:
-		var tween = get_tree().create_tween()
-		tween.tween_property(self, "modulate:a", 0, 1)
-		await tween.finished
-		queue_free()
-		size = Vector2.ZERO
+		hide_dialog()
 		return
 	
 	current_line = next_line

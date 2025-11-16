@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://imikr3ovhf7p"]
+[gd_scene load_steps=6 format=4 uid="uid://imikr3ovhf7p"]
 
 [ext_resource type="TileSet" uid="uid://j62veqj8n3nn" path="res://mundo/tileset.tres" id="1_2hgfj"]
 [ext_resource type="PackedScene" uid="uid://wudv18jejrx8" path="res://mundo/zari.tscn" id="2_2hgfj"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://w36rwe47n1fo" path="res://arte/fondo/Layer2.png" id="8_al70p"]
 [ext_resource type="Texture2D" uid="uid://dt7tm5e5v7yhd" path="res://arte/fondo/Layer1.png" id="9_so5h8"]
 [ext_resource type="Texture2D" uid="uid://djryub35c3uk6" path="res://arte/fondo/DesertSunset.png" id="10_xublk"]
+[ext_resource type="PackedScene" uid="uid://bju1bb44cpq61" path="res://characters/character.tscn" id="5_5lnrp"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -93,3 +94,5 @@ motion_mirroring = Vector2(2300, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
 texture = ExtResource("10_xublk")
+[node name="Character" parent="." instance=ExtResource("5_5lnrp")]
+position = Vector2(8991, 206)
