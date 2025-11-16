@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://cj1xj0j4kaqvl"]
+[gd_scene load_steps=16 format=3 uid="uid://buof4uhnjbcui"]
 
-[ext_resource type="Script" uid="uid://bslwjd241j4hl" path="res://characters/abridor_puertas.gd" id="1_onara"]
+[ext_resource type="Script" path="res://characters/abridor_puertas.gd" id="1_onara"]
 [ext_resource type="Texture2D" uid="uid://mpunaqhqgwjn" path="res://arte/pedal/MaizOverworldNPC1.png" id="2_dwogm"]
 [ext_resource type="Texture2D" uid="uid://bc3cgw4yoagn0" path="res://arte/e_icon.png" id="3_onara"]
 [ext_resource type="PackedScene" uid="uid://t4o4c2n66rv6" path="res://dialogs/dialog_ui.tscn" id="4_bqppe"]
+[ext_resource type="Texture2D" uid="uid://bu7slbxx46y0" path="res://arte/pedal/PedalAlHabla.png" id="5_dwogm"]
 [ext_resource type="Texture2D" uid="uid://b227wvxaj3swr" path="res://arte/pedal/MaizNPC1.png" id="5_w1r7n"]
 [ext_resource type="Script" uid="uid://csbeiv0fpx413" path="res://dialogs/dialog_line.gd" id="6_yigdi"]
 [ext_resource type="Script" uid="uid://css0x2oj0bl10" path="res://dialogs/dialog_election.gd" id="7_nw3rd"]
@@ -13,42 +14,42 @@ size = Vector2(500, 500)
 
 [sub_resource type="Resource" id="Resource_jfi6v"]
 script = ExtResource("6_yigdi")
-text = "¡Pequeño Pedal, me alegra volver a verte!"
+text = "Maíz: ¡Pequeño Pedal, me alegra volver a verte!"
 next_line_id = 1
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_f0775"]
 script = ExtResource("6_yigdi")
 id = 1
-text = "Aunque me temo que no podrás salir de aquí"
+text = "Maíz: Aunque me temo que no podrás salir de aquí"
 next_line_id = 2
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_onara"]
 script = ExtResource("6_yigdi")
 id = 2
-text = "con esas pequeñas zarpas. "
+text = "Maíz: con esas pequeñas zarpas. "
 next_line_id = 3
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_dwogm"]
 script = ExtResource("6_yigdi")
 id = 3
-text = " Pero si no te he dicho mi…"
+text = " Pedal: Pero si no te he dicho mi…"
 next_line_id = 4
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_2ttib"]
 script = ExtResource("6_yigdi")
 id = 4
-text = "Te he dejado un regalito más arriba. Te será útil más adelante."
+text = "Maíz: Te he dejado un regalito más arriba. Te será útil más adelante."
 next_line_id = 5
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_bqppe"]
 script = ExtResource("6_yigdi")
 id = 5
-text = "e falta callo, amigo."
+text = "Maíz: Te falta callo, amigo."
 next_line_id = 6
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
@@ -73,6 +74,7 @@ texture = ExtResource("3_onara")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogUi" parent="CanvasLayer" instance=ExtResource("4_bqppe")]
+character_img_left = ExtResource("5_dwogm")
 character_img_right = ExtResource("5_w1r7n")
 dialog_line_array = Array[ExtResource("6_yigdi")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775"), SubResource("Resource_onara"), SubResource("Resource_dwogm"), SubResource("Resource_2ttib"), SubResource("Resource_bqppe")])
 

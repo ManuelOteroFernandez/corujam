@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://djekmxvm51yxp"]
+[gd_scene load_steps=15 format=3 uid="uid://bahx3etiksi1b"]
 
 [ext_resource type="Script" uid="uid://yn2jtsopy3dj" path="res://characters/character.gd" id="1_yve15"]
 [ext_resource type="Texture2D" uid="uid://mpunaqhqgwjn" path="res://arte/pedal/MaizOverworldNPC1.png" id="2_di4nw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bc3cgw4yoagn0" path="res://arte/e_icon.png" id="3_gk00k"]
 [ext_resource type="Script" uid="uid://csbeiv0fpx413" path="res://dialogs/dialog_line.gd" id="4_gk00k"]
 [ext_resource type="Texture2D" uid="uid://b227wvxaj3swr" path="res://arte/pedal/MaizNPC1.png" id="5_di4nw"]
+[ext_resource type="Texture2D" uid="uid://bu7slbxx46y0" path="res://arte/pedal/PedalAlHabla.png" id="5_gk00k"]
 [ext_resource type="Script" uid="uid://css0x2oj0bl10" path="res://dialogs/dialog_election.gd" id="5_jvfn5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqr4u"]
@@ -13,35 +14,35 @@ size = Vector2(500, 500)
 
 [sub_resource type="Resource" id="Resource_jfi6v"]
 script = ExtResource("4_gk00k")
-text = "Chaval, tienes madera para esto, lo admito."
+text = "Maíz: Chaval, tienes madera para esto, lo admito."
 next_line_id = 1
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_f0775"]
 script = ExtResource("4_gk00k")
 id = 1
-text = "Puede que seas capaz de llegar hasta el fondo del asunto"
+text = "Maíz: Puede que seas capaz de llegar hasta el fondo del asunto"
 next_line_id = 2
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_di4nw"]
 script = ExtResource("4_gk00k")
 id = 2
-text = "después de todo."
+text = "Maíz: después de todo."
 next_line_id = 3
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_gk00k"]
 script = ExtResource("4_gk00k")
 id = 3
-text = "Muchas gracias señor Pólvora, sus conejos han sido de mucha ayuda. "
+text = "Pedal: Muchas gracias señor Pólvora, sus conejos han sido de mucha ayuda. "
 next_line_id = 4
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_jvfn5"]
 script = ExtResource("4_gk00k")
 id = 4
-text = "Conejos?"
+text = "Maíz: Conejos?"
 next_line_id = 5
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
@@ -66,6 +67,7 @@ texture = ExtResource("3_gk00k")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogUi" parent="CanvasLayer" instance=ExtResource("3_di4nw")]
+character_img_left = ExtResource("5_gk00k")
 character_img_right = ExtResource("5_di4nw")
 dialog_line_array = Array[ExtResource("4_gk00k")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775"), SubResource("Resource_di4nw"), SubResource("Resource_gk00k"), SubResource("Resource_jvfn5")])
 

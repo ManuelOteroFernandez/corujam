@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c7q5hglqfkqsn"]
+[gd_scene load_steps=15 format=3 uid="uid://di1vu3y4mwg4n"]
 
 [ext_resource type="Script" uid="uid://yn2jtsopy3dj" path="res://characters/character.gd" id="1_vaj48"]
 [ext_resource type="Texture2D" uid="uid://b8ejek4v3pffj" path="res://arte/paso.png" id="2_3nnf7"]
 [ext_resource type="PackedScene" uid="uid://t4o4c2n66rv6" path="res://dialogs/dialog_ui.tscn" id="3_3nnf7"]
 [ext_resource type="Texture2D" uid="uid://bc3cgw4yoagn0" path="res://arte/e_icon.png" id="3_dmgd8"]
 [ext_resource type="Script" uid="uid://csbeiv0fpx413" path="res://dialogs/dialog_line.gd" id="4_dmgd8"]
+[ext_resource type="Texture2D" uid="uid://bu7slbxx46y0" path="res://arte/pedal/PedalAlHabla.png" id="5_5rjdf"]
 [ext_resource type="Texture2D" uid="uid://0hv7qcrq6n6y" path="res://arte/pasaDialog.png" id="5_dmgd8"]
 [ext_resource type="Script" uid="uid://css0x2oj0bl10" path="res://dialogs/dialog_election.gd" id="5_vksu8"]
 
@@ -13,35 +14,35 @@ size = Vector2(500, 500)
 
 [sub_resource type="Resource" id="Resource_jfi6v"]
 script = ExtResource("4_dmgd8")
-text = "¡Auxilio, me desmayo!"
+text = "Pasa: ¡Auxilio, me desmayo!"
 next_line_id = 1
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_f0775"]
 script = ExtResource("4_dmgd8")
 id = 1
-text = " ¿Qué está pasando aquí?"
+text = "Pedal: ¿Qué está pasando aquí?"
 next_line_id = 2
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_vaj48"]
 script = ExtResource("4_dmgd8")
 id = 2
-text = "Mi Cacahuete, juntos desde la camada,y ahora… Dónde estará."
+text = "Pasa: Mi Cacahuete, juntos desde la camada,y ahora… Dónde estará."
 next_line_id = 3
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_1lds8"]
 script = ExtResource("4_dmgd8")
 id = 3
-text = " Yo le buscaré, ¿cómo sabré quien es?"
+text = " Pedal: Yo le buscaré, ¿cómo sabré quien es?"
 next_line_id = 4
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_3nnf7"]
 script = ExtResource("4_dmgd8")
 id = 4
-text = "Es igual a mi… Pero con una pala azul. ¿O era roja?"
+text = "Pasa: Es igual a mi… Pero con una pala azul. ¿O era roja?"
 next_line_id = 5
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
@@ -67,6 +68,7 @@ texture = ExtResource("3_dmgd8")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogUi" parent="CanvasLayer" instance=ExtResource("3_3nnf7")]
+character_img_left = ExtResource("5_5rjdf")
 character_img_right = ExtResource("5_dmgd8")
 dialog_line_array = Array[ExtResource("4_dmgd8")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775"), SubResource("Resource_vaj48"), SubResource("Resource_1lds8"), SubResource("Resource_3nnf7")])
 
