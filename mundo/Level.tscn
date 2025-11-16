@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://imikr3ovhf7p"]
+[gd_scene load_steps=22 format=4 uid="uid://imikr3ovhf7p"]
 
 [ext_resource type="TileSet" uid="uid://j62veqj8n3nn" path="res://mundo/tileset.tres" id="1_2hgfj"]
 [ext_resource type="PackedScene" uid="uid://wudv18jejrx8" path="res://mundo/zari.tscn" id="2_2hgfj"]
@@ -12,14 +12,19 @@
 [ext_resource type="PackedScene" uid="uid://cpem271s6a1xu" path="res://characters/abridor_puertas.tscn" id="11_al70p"]
 [ext_resource type="Texture2D" uid="uid://culwetoswa647" path="res://arte/placeholders/bloqueDuro.png" id="12_t7ml5"]
 [ext_resource type="PackedScene" uid="uid://cj1xj0j4kaqvl" path="res://characters/dador_guates.tscn" id="13_3kkpk"]
+[ext_resource type="Script" uid="uid://bcrtxsfoij03x" path="res://mundo/cambio_de_pasa.gd" id="13_hb683"]
 [ext_resource type="PackedScene" uid="uid://b17385w0imis6" path="res://characters/character04.tscn" id="14_ye23j"]
 [ext_resource type="PackedScene" uid="uid://c7q5hglqfkqsn" path="res://characters/character05.tscn" id="15_80ynr"]
 [ext_resource type="PackedScene" uid="uid://bl5oxrkxb6aha" path="res://characters/character00.tscn" id="16_t7ml5"]
 [ext_resource type="PackedScene" uid="uid://u1ibc2m482ch" path="res://characters/character06.tscn" id="17_80ynr"]
 [ext_resource type="PackedScene" uid="uid://djekmxvm51yxp" path="res://characters/character07.tscn" id="17_t7ml5"]
+[ext_resource type="PackedScene" uid="uid://d1ebp470xdacl" path="res://characters/character08.tscn" id="19_wokpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kkpk"]
-size = Vector2(367, 502)
+size = Vector2(500, 502)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_frg5x"]
+size = Vector2(1531, 1441)
 
 [node name="Node2D" type="Node2D"]
 
@@ -118,25 +123,38 @@ porta1 = NodePath("../bloqueo2")
 position = Vector2(12400, 9815)
 
 [node name="Sprite2D" type="Sprite2D" parent="bloqueo"]
-position = Vector2(399.99982, 12.999685)
-scale = Vector2(4.845411, 0.98828036)
+position = Vector2(145.99982, 177.9997)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("12_t7ml5")
+
+[node name="Sprite2D2" type="Sprite2D" parent="bloqueo"]
+position = Vector2(662.99976, 177.9997)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("12_t7ml5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bloqueo"]
-position = Vector2(401, 14)
+position = Vector2(408, 162)
 shape = SubResource("RectangleShape2D_3kkpk")
 
 [node name="bloqueo2" type="StaticBody2D" parent="."]
 position = Vector2(6068, 181)
 
 [node name="Sprite2D" type="Sprite2D" parent="bloqueo2"]
-position = Vector2(337.25003, 72.37742)
-scale = Vector2(1.7850243, 2.371485)
+position = Vector2(332.25, 72.377426)
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("12_t7ml5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bloqueo2"]
-position = Vector2(337.5, 76)
+position = Vector2(337, 76)
 shape = SubResource("RectangleShape2D_3kkpk")
+
+[node name="Area2D2" type="Area2D" parent="."]
+position = Vector2(14721, 9473)
+script = ExtResource("13_hb683")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(1353, -5585)
+shape = SubResource("RectangleShape2D_frg5x")
 
 [node name="Character4" parent="." instance=ExtResource("14_ye23j")]
 position = Vector2(14592, 3267)
@@ -153,3 +171,9 @@ position = Vector2(7948, 16637)
 [node name="Character" parent="." instance=ExtResource("17_t7ml5")]
 visible = false
 position = Vector2(8160, 264)
+
+[node name="Character8" parent="." instance=ExtResource("19_wokpd")]
+visible = false
+position = Vector2(14721, 9473)
+
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
