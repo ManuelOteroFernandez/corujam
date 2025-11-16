@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://b17385w0imis6"]
+[gd_scene load_steps=12 format=3 uid="uid://b17385w0imis6"]
 
 [ext_resource type="Script" uid="uid://yn2jtsopy3dj" path="res://characters/character.gd" id="1_3w7pd"]
+[ext_resource type="Texture2D" uid="uid://cq5a00vdih1m2" path="res://arte/cartel.png" id="2_4s132"]
 [ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="2_6bxj4"]
 [ext_resource type="PackedScene" uid="uid://t4o4c2n66rv6" path="res://dialogs/dialog_ui.tscn" id="3_4s132"]
+[ext_resource type="Texture2D" uid="uid://bc3cgw4yoagn0" path="res://arte/e_icon.png" id="3_gbbya"]
 [ext_resource type="Script" uid="uid://csbeiv0fpx413" path="res://dialogs/dialog_line.gd" id="4_gbbya"]
 [ext_resource type="Script" uid="uid://css0x2oj0bl10" path="res://dialogs/dialog_election.gd" id="5_lhimt"]
 
@@ -33,8 +35,9 @@ metadata/_custom_type_script = "uid://csbeiv0fpx413"
 script = ExtResource("1_3w7pd")
 
 [node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("2_6bxj4")
+z_index = -1
+position = Vector2(0, 74.3)
+texture = ExtResource("2_4s132")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -45,7 +48,8 @@ shape = SubResource("RectangleShape2D_qqr4u")
 modulate = Color(1, 1, 1, 0)
 z_index = 2
 position = Vector2(204, -171)
-texture = ExtResource("2_6bxj4")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_gbbya")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

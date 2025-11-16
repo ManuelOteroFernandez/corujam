@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bslwjd241j4hl" path="res://characters/abridor_puertas.gd" id="1_onara"]
 [ext_resource type="Texture2D" uid="uid://mpunaqhqgwjn" path="res://arte/pedal/MaizOverworldNPC1.png" id="2_dwogm"]
-[ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="3_2ttib"]
+[ext_resource type="Texture2D" uid="uid://bc3cgw4yoagn0" path="res://arte/e_icon.png" id="3_onara"]
 [ext_resource type="PackedScene" uid="uid://t4o4c2n66rv6" path="res://dialogs/dialog_ui.tscn" id="4_bqppe"]
 [ext_resource type="Texture2D" uid="uid://b227wvxaj3swr" path="res://arte/pedal/MaizNPC1.png" id="5_w1r7n"]
 [ext_resource type="Script" uid="uid://csbeiv0fpx413" path="res://dialogs/dialog_line.gd" id="6_yigdi"]
@@ -67,7 +67,8 @@ shape = SubResource("RectangleShape2D_qqr4u")
 modulate = Color(1, 1, 1, 0)
 z_index = 2
 position = Vector2(204, -171)
-texture = ExtResource("3_2ttib")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_onara")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

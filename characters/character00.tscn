@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://yn2jtsopy3dj" path="res://characters/character.gd" id="1_d0nbq"]
 [ext_resource type="Texture2D" uid="uid://mpunaqhqgwjn" path="res://arte/pedal/MaizOverworldNPC1.png" id="2_3trtp"]
-[ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="2_kh1kd"]
 [ext_resource type="PackedScene" uid="uid://t4o4c2n66rv6" path="res://dialogs/dialog_ui.tscn" id="3_3trtp"]
+[ext_resource type="Texture2D" uid="uid://bc3cgw4yoagn0" path="res://arte/e_icon.png" id="3_371p7"]
 [ext_resource type="Script" uid="uid://csbeiv0fpx413" path="res://dialogs/dialog_line.gd" id="4_371p7"]
 [ext_resource type="Texture2D" uid="uid://b227wvxaj3swr" path="res://arte/pedal/MaizNPC1.png" id="5_371p7"]
 [ext_resource type="Script" uid="uid://css0x2oj0bl10" path="res://dialogs/dialog_election.gd" id="5_jvjsl"]
@@ -102,7 +102,8 @@ shape = SubResource("RectangleShape2D_qqr4u")
 modulate = Color(1, 1, 1, 0)
 z_index = 2
 position = Vector2(204, -171)
-texture = ExtResource("2_kh1kd")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_371p7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
