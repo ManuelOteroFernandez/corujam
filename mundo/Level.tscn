@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://imikr3ovhf7p"]
+[gd_scene load_steps=23 format=4 uid="uid://imikr3ovhf7p"]
 
 [ext_resource type="TileSet" uid="uid://j62veqj8n3nn" path="res://mundo/tileset.tres" id="1_2hgfj"]
 [ext_resource type="PackedScene" uid="uid://wudv18jejrx8" path="res://mundo/zari.tscn" id="2_2hgfj"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://c7720raecqog8" path="res://mundo/scripts/musica_fondo.gd" id="19_hb683"]
 [ext_resource type="AudioStream" uid="uid://n6lal86ptbwa" path="res://sonido/ItemConseguido.wav" id="20_wokpd"]
 [ext_resource type="PackedScene" uid="uid://d1ebp470xdacl" path="res://characters/character08.tscn" id="19_wokpd"]
+[ext_resource type="PackedScene" uid="uid://7qoeox0non7l" path="res://characters/character09.tscn" id="20_wokpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kkpk"]
 size = Vector2(1200, 502)
@@ -182,5 +183,8 @@ stream = ExtResource("20_wokpd")
 [node name="Character8" parent="." instance=ExtResource("19_wokpd")]
 visible = false
 position = Vector2(14721, 9473)
+
+[node name="Character9" parent="." instance=ExtResource("20_wokpd")]
+position = Vector2(16801, 21769)
 
 [connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
