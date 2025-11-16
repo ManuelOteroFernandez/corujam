@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b17385w0imis6"]
+[gd_scene load_steps=12 format=3 uid="uid://cstva07sguopt"]
 
 [ext_resource type="Script" uid="uid://yn2jtsopy3dj" path="res://characters/character.gd" id="1_3w7pd"]
 [ext_resource type="Texture2D" uid="uid://cq5a00vdih1m2" path="res://arte/cartel.png" id="2_4s132"]
@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://csbeiv0fpx413"
 [sub_resource type="Resource" id="Resource_f0775"]
 script = ExtResource("4_gbbya")
 id = 1
-text = "Voy a probar a ir por la tierra blanda que hay abajomás a la derecha."
+text = "Voy a probar a ir por la tierra blanda que hay abajo más a la derecha."
 next_line_id = 2
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 

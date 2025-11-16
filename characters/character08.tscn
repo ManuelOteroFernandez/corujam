@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1ebp470xdacl"]
+[gd_scene load_steps=15 format=3 uid="uid://cr8um7k2ltyhd"]
 
 [ext_resource type="Script" uid="uid://yn2jtsopy3dj" path="res://characters/character.gd" id="1_teoya"]
 [ext_resource type="Texture2D" uid="uid://b8ejek4v3pffj" path="res://arte/paso.png" id="2_wimup"]
 [ext_resource type="Texture2D" uid="uid://bc3cgw4yoagn0" path="res://arte/e_icon.png" id="3_3f25w"]
 [ext_resource type="PackedScene" uid="uid://t4o4c2n66rv6" path="res://dialogs/dialog_ui.tscn" id="4_vb3gy"]
+[ext_resource type="Texture2D" uid="uid://bu7slbxx46y0" path="res://arte/pedal/PedalAlHabla.png" id="5_wimup"]
 [ext_resource type="Texture2D" uid="uid://0hv7qcrq6n6y" path="res://arte/pasaDialog.png" id="5_xnkki"]
 [ext_resource type="Script" uid="uid://csbeiv0fpx413" path="res://dialogs/dialog_line.gd" id="6_rfp58"]
 [ext_resource type="Script" uid="uid://css0x2oj0bl10" path="res://dialogs/dialog_election.gd" id="7_gjnx1"]
@@ -13,35 +14,35 @@ size = Vector2(500, 500)
 
 [sub_resource type="Resource" id="Resource_jfi6v"]
 script = ExtResource("6_rfp58")
-text = "Que no panda el cúnico! Cacahuete está bien, que baja en 5 minutitos."
+text = "Pedal: Que no panda el cúnico! Cacahuete está bien, que baja en 5 minutitos."
 next_line_id = 1
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_f0775"]
 script = ExtResource("6_rfp58")
 id = 1
-text = "Lo que si, no has ido a buscarle? Ha dejadoun cartel bastante explicativo de dónde estaba."
+text = "Pedal: Lo que si, ¿no has ido a buscarle? Ha dejado un cartel bastante explicando dónde está."
 next_line_id = 2
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_vaj48"]
 script = ExtResource("6_rfp58")
 id = 2
-text = "Ese es mi secreto, pequeño. No se leer."
+text = "Pasa: Ese es mi secreto, pequeño. No se leer."
 next_line_id = 3
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_1lds8"]
 script = ExtResource("6_rfp58")
 id = 3
-text = "…"
+text = "Pedal: …"
 next_line_id = 4
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_3nnf7"]
 script = ExtResource("6_rfp58")
 id = 4
-text = "En fin, muchas gracias por encontrar a Cacahuete."
+text = "Pasa: En fin, muchas gracias por encontrar a Cacahuete."
 next_line_id = 5
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
@@ -67,6 +68,7 @@ texture = ExtResource("3_3f25w")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogUi" parent="CanvasLayer" instance=ExtResource("4_vb3gy")]
+character_img_left = ExtResource("5_wimup")
 character_img_right = ExtResource("5_xnkki")
 dialog_line_array = Array[ExtResource("6_rfp58")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775"), SubResource("Resource_vaj48"), SubResource("Resource_1lds8"), SubResource("Resource_3nnf7")])
 

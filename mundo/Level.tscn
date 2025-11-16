@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=4 uid="uid://imikr3ovhf7p"]
 
-[ext_resource type="TileSet" uid="uid://j62veqj8n3nn" path="res://mundo/tileset.tres" id="1_2hgfj"]
+[ext_resource type="TileSet" uid="uid://b8wrh4mtahvli" path="res://mundo/tileset.tres" id="1_2hgfj"]
 [ext_resource type="PackedScene" uid="uid://wudv18jejrx8" path="res://mundo/zari.tscn" id="2_2hgfj"]
 [ext_resource type="PackedScene" uid="uid://c3jlyv1dq61sq" path="res://powerups/double_jump.tscn" id="3_sfns7"]
 [ext_resource type="PackedScene" uid="uid://c7o6utciwhq0a" path="res://powerups/break_hard.tscn" id="4_i0nct"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://w36rwe47n1fo" path="res://arte/fondo/Layer2.png" id="8_al70p"]
 [ext_resource type="Texture2D" uid="uid://dt7tm5e5v7yhd" path="res://arte/fondo/Layer1.png" id="9_so5h8"]
 [ext_resource type="Texture2D" uid="uid://djryub35c3uk6" path="res://arte/fondo/DesertSunset.png" id="10_xublk"]
-[ext_resource type="PackedScene" uid="uid://cpem271s6a1xu" path="res://characters/abridor_puertas.tscn" id="11_al70p"]
+[ext_resource type="PackedScene" uid="uid://chdjwp4rwxg87" path="res://characters/abridor_puertas.tscn" id="11_al70p"]
 [ext_resource type="Texture2D" uid="uid://culwetoswa647" path="res://arte/placeholders/bloqueDuro.png" id="12_t7ml5"]
 [ext_resource type="PackedScene" uid="uid://cj1xj0j4kaqvl" path="res://characters/dador_guates.tscn" id="13_3kkpk"]
 [ext_resource type="Script" path="res://mundo/cambio_de_pasa.gd" id="13_hb683"]
@@ -24,7 +24,7 @@
 [ext_resource type="AudioStream" uid="uid://n6lal86ptbwa" path="res://sonido/ItemConseguido.wav" id="20_wokpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kkpk"]
-size = Vector2(500, 502)
+size = Vector2(1200, 502)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_frg5x"]
 size = Vector2(1531, 1441)
@@ -37,7 +37,6 @@ tile_map_data = PackedByteArray("AAABAAoAAAAAAAAAAAABAAwAAAAAAAAAAAABAA4AAAAAAAA
 tile_set = ExtResource("1_2hgfj")
 occlusion_enabled = false
 rendering_quadrant_size = 512
-metadata/_edit_lock_ = true
 
 [node name="Bloqueo" type="TileMapLayer" parent="."]
 position = Vector2(0, 512)
@@ -45,7 +44,6 @@ tile_map_data = PackedByteArray("AAAGACoAAAADAAAAAAAHACoAAAADAAAAAAAIACoAAAADAAA
 tile_set = ExtResource("1_2hgfj")
 occlusion_enabled = false
 rendering_quadrant_size = 512
-metadata/_edit_lock_ = true
 
 [node name="zari" parent="." node_paths=PackedStringArray("tilemap") groups=["player"] instance=ExtResource("2_2hgfj")]
 position = Vector2(8897, -295)
@@ -156,7 +154,7 @@ position = Vector2(14721, 9473)
 script = ExtResource("13_hb683")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(1353, -5585)
+position = Vector2(1047, -7929)
 shape = SubResource("RectangleShape2D_frg5x")
 
 [node name="Character4" parent="." instance=ExtResource("14_ye23j")]
@@ -185,5 +183,8 @@ stream = ExtResource("20_wokpd")
 [node name="Character8" parent="." instance=ExtResource("19_wokpd")]
 visible = false
 position = Vector2(14721, 9473)
+
+[node name="Character9" parent="." instance=ExtResource("20_wokpd")]
+position = Vector2(16801, 21769)
 
 [connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]

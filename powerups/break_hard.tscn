@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7o6utciwhq0a"]
 
 [ext_resource type="Script" uid="uid://c4dkcsroiuol6" path="res://powerups/break_hard.gd" id="1_3fdh4"]
-[ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="2_838yw"]
+[ext_resource type="Texture2D" uid="uid://dvyxbcyym7c1w" path="res://arte/Ilustracion_sin_titulo-20.png" id="2_3fdh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f683f"]
-size = Vector2(200, 200)
+size = Vector2(500, 500)
 
 [node name="Poweup" type="Node2D"]
 script = ExtResource("1_3fdh4")
@@ -15,6 +15,6 @@ script = ExtResource("1_3fdh4")
 shape = SubResource("RectangleShape2D_f683f")
 
 [node name="Icon" type="Sprite2D" parent="Area2D"]
-texture = ExtResource("2_838yw")
+texture = ExtResource("2_3fdh4")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://u1ibc2m482ch"]
+[gd_scene load_steps=17 format=3 uid="uid://cc3m8xwb8q48t"]
 
 [ext_resource type="Script" uid="uid://yn2jtsopy3dj" path="res://characters/character.gd" id="1_sd5io"]
 [ext_resource type="Texture2D" uid="uid://dimx0gxgg24xk" path="res://arte/mapache.png" id="2_gshf6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://t4o4c2n66rv6" path="res://dialogs/dialog_ui.tscn" id="3_gshf6"]
 [ext_resource type="Script" uid="uid://csbeiv0fpx413" path="res://dialogs/dialog_line.gd" id="4_65n6a"]
 [ext_resource type="Script" uid="uid://css0x2oj0bl10" path="res://dialogs/dialog_election.gd" id="5_2lxo3"]
+[ext_resource type="Texture2D" uid="uid://bu7slbxx46y0" path="res://arte/pedal/PedalAlHabla.png" id="5_65n6a"]
 [ext_resource type="Texture2D" uid="uid://dclvq8mao1pwb" path="res://arte/Ilustracion_sin_titulo-17.png" id="5_gshf6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqr4u"]
@@ -13,49 +14,49 @@ size = Vector2(500, 500)
 
 [sub_resource type="Resource" id="Resource_jfi6v"]
 script = ExtResource("4_65n6a")
-text = "¡Arrepentíos mortales, pues el fin (del juego)está cerca!"
+text = "Tiramisú: ¡Arrepentíos mortales, pues el fin (del juego)está cerca!"
 next_line_id = 1
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_f0775"]
 script = ExtResource("4_65n6a")
 id = 1
-text = "¡Y tú muchacho serás quien le ponga fin a todo esto!"
+text = "Tiramisú: ¡Y tú muchacho serás quien le ponga fin a todo esto!"
 next_line_id = 2
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_gshf6"]
 script = ExtResource("4_65n6a")
 id = 2
-text = "¿Que…?"
+text = "Pedal: ¿Que…?"
 next_line_id = 3
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_65n6a"]
 script = ExtResource("4_65n6a")
 id = 3
-text = "¡Lo he visto en mi sopa (de letras)!"
+text = "Tiramisú: ¡Lo he visto en mi sopa (de letras)!"
 next_line_id = 4
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_2lxo3"]
 script = ExtResource("4_65n6a")
 id = 4
-text = "¡Cogerás los Puños americanos del poder de mi despensae irás con ellos hasta el fin!"
+text = "Tiramisú: ¡Cogerás los Puños americanos del poder de mi despensae irás con ellos hasta el fin!"
 next_line_id = 5
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_3ah0j"]
 script = ExtResource("4_65n6a")
 id = 5
-text = "¿Y dónde dices que está esa despensa?"
+text = "Pedal: ¿Y dónde dices que está esa despensa?"
 next_line_id = 6
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_f20q7"]
 script = ExtResource("4_65n6a")
 id = 6
-text = "¡Detrás de m…! ¡Ups!"
+text = "Tiramisú: ¡Detrás de m…! ¡Ups!"
 next_line_id = 7
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
@@ -82,6 +83,7 @@ texture = ExtResource("3_65n6a")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogUi" parent="CanvasLayer" instance=ExtResource("3_gshf6")]
+character_img_left = ExtResource("5_65n6a")
 character_img_right = ExtResource("5_gshf6")
 dialog_line_array = Array[ExtResource("4_65n6a")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775"), SubResource("Resource_gshf6"), SubResource("Resource_65n6a"), SubResource("Resource_2lxo3"), SubResource("Resource_3ah0j"), SubResource("Resource_f20q7")])
 
