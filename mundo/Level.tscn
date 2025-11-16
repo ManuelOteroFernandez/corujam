@@ -40,14 +40,17 @@ rendering_quadrant_size = 512
 metadata/_edit_lock_ = true
 
 [node name="zari" parent="." node_paths=PackedStringArray("tilemap") groups=["player"] instance=ExtResource("2_2hgfj")]
-position = Vector2(16320, 1693)
+position = Vector2(6894, 6612)
 v = 1500.0
 v_salto = 700.0
 g = 3000.0
 tilemap = NodePath("../Escavable")
 
-[node name="DoubleJump" parent="." instance=ExtResource("3_sfns7")]
+[node name="DoubleJump" parent="." node_paths=PackedStringArray("tipinho1", "tipinho2", "tipinho3") instance=ExtResource("3_sfns7")]
 position = Vector2(2292, 1777)
+tipinho1 = NodePath("../Character")
+tipinho2 = NodePath("../Character6")
+tipinho3 = NodePath("../Character3")
 
 [node name="Poweup" parent="." instance=ExtResource("4_i0nct")]
 position = Vector2(11268, 16047)
@@ -148,4 +151,5 @@ position = Vector2(12042, 255)
 position = Vector2(7948, 16637)
 
 [node name="Character" parent="." instance=ExtResource("17_t7ml5")]
+visible = false
 position = Vector2(8160, 264)
