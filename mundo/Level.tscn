@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dt7tm5e5v7yhd" path="res://arte/fondo/Layer1.png" id="9_so5h8"]
 [ext_resource type="Texture2D" uid="uid://djryub35c3uk6" path="res://arte/fondo/DesertSunset.png" id="10_xublk"]
 [ext_resource type="PackedScene" uid="uid://cpem271s6a1xu" path="res://characters/abridor_puertas.tscn" id="11_al70p"]
-[ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="12_so5h8"]
+[ext_resource type="Texture2D" uid="uid://culwetoswa647" path="res://arte/placeholders/bloqueDuro.png" id="12_t7ml5"]
 [ext_resource type="PackedScene" uid="uid://cj1xj0j4kaqvl" path="res://characters/dador_guates.tscn" id="13_3kkpk"]
 [ext_resource type="PackedScene" uid="uid://b17385w0imis6" path="res://characters/character04.tscn" id="14_ye23j"]
 [ext_resource type="PackedScene" uid="uid://c7q5hglqfkqsn" path="res://characters/character05.tscn" id="15_80ynr"]
@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://djekmxvm51yxp" path="res://characters/character07.tscn" id="17_t7ml5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kkpk"]
-size = Vector2(512, 512)
+size = Vector2(367, 502)
 
 [node name="Node2D" type="Node2D"]
 
@@ -40,7 +40,7 @@ rendering_quadrant_size = 512
 metadata/_edit_lock_ = true
 
 [node name="zari" parent="." node_paths=PackedStringArray("tilemap") groups=["player"] instance=ExtResource("2_2hgfj")]
-position = Vector2(6894, 6612)
+position = Vector2(8526, -359)
 v = 1500.0
 v_salto = 700.0
 g = 3000.0
@@ -118,24 +118,24 @@ porta1 = NodePath("../bloqueo2")
 position = Vector2(12400, 9815)
 
 [node name="Sprite2D" type="Sprite2D" parent="bloqueo"]
-position = Vector2(398.49994, -38.500454)
-scale = Vector2(7.960932, 0.7265603)
-texture = ExtResource("12_so5h8")
+position = Vector2(399.99982, 12.999685)
+scale = Vector2(4.845411, 0.98828036)
+texture = ExtResource("12_t7ml5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bloqueo"]
-position = Vector2(400.5, -38)
+position = Vector2(401, 14)
 shape = SubResource("RectangleShape2D_3kkpk")
 
 [node name="bloqueo2" type="StaticBody2D" parent="."]
 position = Vector2(6068, 181)
 
 [node name="Sprite2D" type="Sprite2D" parent="bloqueo2"]
-position = Vector2(331.9998, 79.5)
-scale = Vector2(3.9999979, 4.023438)
-texture = ExtResource("12_so5h8")
+position = Vector2(337.25003, 72.37742)
+scale = Vector2(1.7850243, 2.371485)
+texture = ExtResource("12_t7ml5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bloqueo2"]
-position = Vector2(334, 77)
+position = Vector2(337.5, 76)
 shape = SubResource("RectangleShape2D_3kkpk")
 
 [node name="Character4" parent="." instance=ExtResource("14_ye23j")]
