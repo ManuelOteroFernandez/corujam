@@ -5,34 +5,42 @@ extends CharacterBody2D
 @export var g: float # Gravedade
 @export var tilemap: TileMapLayer # Mundo
 
+@onready var _initial_g = g
+
 var _mirando_dereita = true
+var _is_moving = false
 var current_platform: Node = null
 var subterraneo = false
 
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("abaixo") and not subterraneo:
-		if check_escavable(Vector2.DOWN):
-			print("intpu down")
-			go_in_subterraneo(Vector2.DOWN)
+		check_start_subterraneo(Vector2.DOWN)
 
 func _physics_process(delta: float) -> void:
 	if not subterraneo:
 		mover_x()
 		flipear()
+		
+		if not is_on_floor():
+			velocity.y += g * delta
+			excavar_in_air()
+			
+		move_and_slide()
+		
+		if Input.is_action_pressed("abaixo"):
+			check_start_subterraneo(Vector2.DOWN)
+		
 	else:
 		escarvar()
 		
-	if (not is_on_floor() and not subterraneo):
-		velocity.y += g * delta
 		
-	move_and_slide()
+func excavar_in_air():
+	if Input.is_action_pressed("arriba"):
+		check_start_subterraneo(Vector2.UP)
 
-	if not subterraneo:
-		check_start_subterraneo()
 	
 func check_start_subterraneo(direction: Vector2 = Vector2.ZERO):
-	print("check start subte {0}".format([direction]))
 	var direction_x = 0
 	var direction_y = 0
 	if direction == Vector2.ZERO:
@@ -41,6 +49,7 @@ func check_start_subterraneo(direction: Vector2 = Vector2.ZERO):
 	else:
 		direction_x = direction.x
 		direction_y = direction.y
+	
 	
 	if direction_x != 0:
 		var check_dir = Vector2i(direction_x,0)
@@ -55,7 +64,7 @@ func check_escavable(direction: Vector2) -> bool:
 	var space_state = get_world_2d().direct_space_state
 	var query = PhysicsRayQueryParameters2D.create(
 		global_position,
-		global_position + 256 * direction
+		global_position + 200 * direction
 	)
 	query.exclude = [self]
 	var result = space_state.intersect_ray(query)
@@ -67,8 +76,14 @@ func check_escavable(direction: Vector2) -> bool:
 
 
 func mover_x():
+	if not is_on_floor():
+		return
+		
 	var eixo = Input.get_axis("esquerda", "dereita")
 	velocity.x = eixo * v
+	
+	if eixo != 0:
+		check_start_subterraneo(Vector2(eixo,0))
 
 
 func flipear():
@@ -82,7 +97,6 @@ func saltar():
 
 
 func mover_grid(mov: Vector2i, close_hole = true):
-	print("move")
 	var tile_pos := tilemap.local_to_map(tilemap.to_local(global_position))
 
 	global_position = tilemap.to_global(tilemap.map_to_local(tile_pos + mov))
@@ -90,51 +104,63 @@ func mover_grid(mov: Vector2i, close_hole = true):
 
 	var tween = get_tree().create_tween()
 	tween.tween_property($Sprite2D, "modulate:a", 1.0, 0.3)
+		
+	await tween.finished
+	_is_moving = false
 	if close_hole:
-		tilemap.set_cell(tile_pos, 0, Vector2i(2,0))
+		tilemap.set_cell(tile_pos, 0, Vector2i(4,0))
 
 func check_tile(direction:Vector2i) -> bool:
 	var tile_pos := tilemap.local_to_map(tilemap.to_local(global_position))
 	return tilemap.get_cell_tile_data(tile_pos+direction) != null
 	
 func escarvar():
-	if (Input.is_action_just_pressed("abaixo")):
+	
+	if (Input.is_action_just_pressed("abaixo") and not _is_moving):
 		
 		if not check_tile(Vector2i.DOWN):
 			if subterraneo:
 				out_floor(Vector2.DOWN)
 			return
-			
+		
+		_is_moving = true
 		var tween = get_tree().create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
+		
 		tween.tween_callback(mover_grid.bind(Vector2i.DOWN))
-	elif (Input.is_action_just_pressed("dereita")):
+	elif (Input.is_action_just_pressed("dereita") and not _is_moving):
 		
 		if not check_tile(Vector2i.RIGHT):
 			if subterraneo:			
 				out_floor(Vector2.RIGHT)
 			return
-			
+		
+		_is_moving = true
+		
 		var tween = get_tree().create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
 		tween.tween_callback(mover_grid.bind(Vector2i.RIGHT))
-	elif (Input.is_action_just_pressed("esquerda")):
+	elif (Input.is_action_just_pressed("esquerda") and not _is_moving):
 		
 		if not check_tile(Vector2i.LEFT):
 			if subterraneo:
 				out_floor(Vector2.LEFT)
 			return
-			
+		
+		_is_moving = true
+		
 		var tween = get_tree().create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
 		tween.tween_callback(mover_grid.bind(Vector2i.LEFT))
-	elif (Input.is_action_just_pressed("arriba")):
+	elif (Input.is_action_just_pressed("arriba") and not _is_moving):
 		
 		if not check_tile(Vector2i.UP):
 			if subterraneo:
 				out_floor(Vector2.UP)
 			return
-			
+		
+		_is_moving = true
+		
 		var tween = get_tree().create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
 		tween.tween_callback(mover_grid.bind(Vector2i.UP))
@@ -146,17 +172,27 @@ func out_floor(direction:Vector2):
 	var tile_pos := tilemap.local_to_map(tilemap.to_local(global_position))
 	
 	subterraneo = false
-	g = 1200
+	g = _initial_g
 	global_position += direction * 512
+	
+	velocity = Vector2.ZERO
+	
+	move_and_slide()
 	
 	if direction == Vector2.UP:
 		saltar()
 	
-	tilemap.set_cell(tile_pos, 0, Vector2i(2,0))
+	tilemap.set_cell(tile_pos, 0, Vector2i(4,0))
 	
 func go_in_subterraneo(direction: Vector2i):
-	print("go_in_subte")
-	subterraneo = true
+	if _is_moving:
+		return
+	
+	_is_moving = true
+		
+		
 	var tween = get_tree().create_tween()
 	tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
 	tween.tween_callback(mover_grid.bind(direction, false))
+	
+	subterraneo = true

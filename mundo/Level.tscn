@@ -22,5 +22,6 @@ rendering_quadrant_size = 512
 [node name="zari" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("2_2hgfj")]
 position = Vector2(8692, 4279)
 v = 1500.0
-v_salto = 1200.0
+v_salto = 1100.0
+g = 3000.0
 tilemap = NodePath("../Escavable")
