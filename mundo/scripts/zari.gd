@@ -9,12 +9,61 @@ var _mirando_dereita = true
 var current_platform: Node = null
 var subterraneo = false
 
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("abaixo") and not subterraneo:
+		if check_escavable(Vector2.DOWN):
+			print("intpu down")
+			go_in_subterraneo(Vector2.DOWN)
+
 func _physics_process(delta: float) -> void:
-	mover_x()
-	flipear()
-	saltar(delta)
-	escarvar()
+	if not subterraneo:
+		mover_x()
+		flipear()
+	else:
+		escarvar()
+		
+	if (not is_on_floor() and not subterraneo):
+		velocity.y += g * delta
+		
 	move_and_slide()
+
+	if not subterraneo:
+		check_start_subterraneo()
+	
+func check_start_subterraneo(direction: Vector2 = Vector2.ZERO):
+	print("check start subte {0}".format([direction]))
+	var direction_x = 0
+	var direction_y = 0
+	if direction == Vector2.ZERO:
+		direction_x = 1 if velocity.x > 0 else -1 if velocity.x < 0 else 0
+		direction_y = 1 if velocity.y > 0 else -1 if velocity.y < 0 else 0
+	else:
+		direction_x = direction.x
+		direction_y = direction.y
+	
+	if direction_x != 0:
+		var check_dir = Vector2i(direction_x,0)
+		if check_escavable(check_dir):
+			go_in_subterraneo(check_dir)
+	elif direction_y != 0:
+		var check_dir = Vector2i(0,direction_y)
+		if check_escavable(check_dir):
+			go_in_subterraneo(check_dir)
+
+func check_escavable(direction: Vector2) -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(
+		global_position,
+		global_position + 256 * direction
+	)
+	query.exclude = [self]
+	var result = space_state.intersect_ray(query)
+	if result and result["collider"] and result["collider"].is_in_group("escavable"):
+		return true
+	
+	return false
+
 
 
 func mover_x():
@@ -28,103 +77,86 @@ func flipear():
 		_mirando_dereita = !_mirando_dereita
 		
 		
-func saltar(delta):
-	if (Input.is_action_just_pressed("arriba") and is_on_floor()):
-		velocity.y = - v_salto
-	if (not is_on_floor()):
-		velocity.y += g * delta
+func saltar():
+	velocity.y = - v_salto
 
 
-func mover_grid(mov):
-	
+func mover_grid(mov: Vector2i, close_hole = true):
+	print("move")
 	var tile_pos := tilemap.local_to_map(tilemap.to_local(global_position))
-		
-	if tile_pos.y == 1:
-			tilemap.set_cell(tile_pos, 0, Vector2i(0,0))
-	if mov == "abaixo":
-		global_position = tilemap.to_global(tilemap.map_to_local(tile_pos+Vector2i(0,1)))
-		tilemap.set_cell(tile_pos + Vector2i(0,1), 0, Vector2i(1,0))
-	elif mov == "dereita":
-		global_position = tilemap.to_global(tilemap.map_to_local(tile_pos+Vector2i(1,0)))
-		tilemap.set_cell(tile_pos + Vector2i(1,0), 0, Vector2i(1,0))
-	elif mov == "esquerda":
-		global_position = tilemap.to_global(tilemap.map_to_local(tile_pos+Vector2i(-1,0)))
-		tilemap.set_cell(tile_pos + Vector2i(-1,0), 0, Vector2i(1,0))
-	elif mov == "arriba":
-		global_position = tilemap.to_global(tilemap.map_to_local(tile_pos+Vector2i(0,-1)))
-		if tilemap.get_cell_tile_data(tile_pos+Vector2i(0,-1)) == null:
-			subterraneo = false
-			g = 1200
-		else:
-			tilemap.set_cell(tile_pos + Vector2i(0,-1), 0, Vector2i(1,0))
+
+	global_position = tilemap.to_global(tilemap.map_to_local(tile_pos + mov))
+	tilemap.set_cell(tile_pos + mov, 0, Vector2i(1,0))
 
 	var tween = get_tree().create_tween()
 	tween.tween_property($Sprite2D, "modulate:a", 1.0, 0.3)
-	$Sprite2D.z_index = 1
-	print("pabaixo {0}, tilePos: {1}".format([global_position, tile_pos]))
+	if close_hole:
+		tilemap.set_cell(tile_pos, 0, Vector2i(2,0))
 
 func check_tile(direction:Vector2i) -> bool:
 	var tile_pos := tilemap.local_to_map(tilemap.to_local(global_position))
 	return tilemap.get_cell_tile_data(tile_pos+direction) != null
 	
 func escarvar():
-	
-	if (Input.is_action_just_pressed("abaixo") and is_on_floor() and (not subterraneo)):
+	if (Input.is_action_just_pressed("abaixo")):
 		
 		if not check_tile(Vector2i.DOWN):
-			subterraneo = false
-			g = 1200
-			global_position += Vector2.DOWN * 512
+			if subterraneo:
+				out_floor(Vector2.DOWN)
 			return
 			
 		var tween = get_tree().create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
-		tween.tween_callback(mover_grid.bind("abaixo"))
-		subterraneo = true
-	elif (Input.is_action_just_pressed("abaixo") and subterraneo):
-		
-		if not check_tile(Vector2i.DOWN):
-			subterraneo = false
-			g = 1200
-			global_position += Vector2.DOWN * 512
-			return
-			
-		var tween = get_tree().create_tween()
-		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
-		tween.tween_callback(mover_grid.bind("abaixo"))
-	elif (Input.is_action_just_pressed("dereita") and subterraneo):
+		tween.tween_callback(mover_grid.bind(Vector2i.DOWN))
+	elif (Input.is_action_just_pressed("dereita")):
 		
 		if not check_tile(Vector2i.RIGHT):
-			subterraneo = false
-			g = 1200
-			global_position += Vector2.RIGHT * 512
+			if subterraneo:			
+				out_floor(Vector2.RIGHT)
 			return
 			
 		var tween = get_tree().create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
-		tween.tween_callback(mover_grid.bind("dereita"))
-	elif (Input.is_action_just_pressed("esquerda") and subterraneo):
+		tween.tween_callback(mover_grid.bind(Vector2i.RIGHT))
+	elif (Input.is_action_just_pressed("esquerda")):
 		
 		if not check_tile(Vector2i.LEFT):
-			subterraneo = false
-			g = 1200
-			global_position += Vector2.LEFT * 512
+			if subterraneo:
+				out_floor(Vector2.LEFT)
 			return
 			
 		var tween = get_tree().create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
-		tween.tween_callback(mover_grid.bind("esquerda"))
-	elif (Input.is_action_just_pressed("arriba") and subterraneo):
+		tween.tween_callback(mover_grid.bind(Vector2i.LEFT))
+	elif (Input.is_action_just_pressed("arriba")):
 		
 		if not check_tile(Vector2i.UP):
-			subterraneo = false
-			g = 1200
-			global_position += Vector2.UP * 512
+			if subterraneo:
+				out_floor(Vector2.UP)
 			return
 			
 		var tween = get_tree().create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
-		tween.tween_callback(mover_grid.bind("arriba"))
+		tween.tween_callback(mover_grid.bind(Vector2i.UP))
 			
 	if subterraneo:
 		g = 0
+
+func out_floor(direction:Vector2):
+	var tile_pos := tilemap.local_to_map(tilemap.to_local(global_position))
+	
+	subterraneo = false
+	g = 1200
+	global_position += direction * 512
+	
+	if direction == Vector2.UP:
+		saltar()
+	
+	tilemap.set_cell(tile_pos, 0, Vector2i(2,0))
+	
+func go_in_subterraneo(direction: Vector2i):
+	print("go_in_subte")
+	subterraneo = true
+	var tween = get_tree().create_tween()
+	tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
+	tween.tween_callback(mover_grid.bind(direction, false))
