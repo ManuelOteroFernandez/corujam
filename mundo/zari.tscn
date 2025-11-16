@@ -1,11 +1,67 @@
-[gd_scene load_steps=4 format=3 uid="uid://wudv18jejrx8"]
+[gd_scene load_steps=10 format=3 uid="uid://wudv18jejrx8"]
 
-[ext_resource type="Texture2D" uid="uid://ck0gp5l85nk8f" path="res://arte/placeholders/teupa.png" id="1_hbgnr"]
 [ext_resource type="Script" uid="uid://b3i7gf6u261wo" path="res://mundo/scripts/zari.gd" id="1_tjsoc"]
+[ext_resource type="Texture2D" uid="uid://8i3s86v40tjt" path="res://arte/pedal/Posumidle0.png" id="2_m5cxm"]
+[ext_resource type="Texture2D" uid="uid://d3gbl2g8r571n" path="res://arte/pedal/Posumidle1.png" id="3_gn6hb"]
+[ext_resource type="Texture2D" uid="uid://cu11xlyxg3aqt" path="res://arte/pedal/Possum2.png" id="4_co3j3"]
+[ext_resource type="Texture2D" uid="uid://kcc8kcwdk0hf" path="res://arte/pedal/Possum.png" id="4_gn6hb"]
+[ext_resource type="Texture2D" uid="uid://dsnoe53185dtc" path="res://arte/pedal/Possumcaminar1.png" id="5_tdgdb"]
+[ext_resource type="Texture2D" uid="uid://c7tehi4xqu22f" path="res://arte/pedal/Possumcaminar2.png" id="6_co3j3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjsoc"]
 radius = 112.0
 height = 390.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nmodc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m5cxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gn6hb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m5cxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m5cxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m5cxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m5cxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m5cxm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_co3j3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gn6hb")
+}],
+"loop": false,
+"name": &"dig",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_tdgdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_co3j3")
+}],
+"loop": true,
+"name": &"run",
+"speed": 4.0
+}]
 
 [node name="zari" type="CharacterBody2D"]
 script = ExtResource("1_tjsoc")
@@ -16,10 +72,13 @@ g = 980.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 shape = SubResource("CapsuleShape2D_tjsoc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 1
-position = Vector2(0, -61)
-texture = ExtResource("1_hbgnr")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -40)
+sprite_frames = SubResource("SpriteFrames_nmodc")
+animation = &"dig"
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)

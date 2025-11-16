@@ -41,7 +41,20 @@ func _physics_process(delta: float) -> void:
 	else:
 		escarvar()
 		
+
+func _process(_delta: float) -> void:
+	
+	if subterraneo:
+		return
 		
+	if velocity == Vector2.ZERO:
+		$Sprite2D.animation = "default"
+	
+	elif velocity.x != 0:
+		$Sprite2D.animation = "run"
+		
+
+
 func excavar_in_air():
 	if Input.is_action_pressed("arriba"):
 		check_start_subterraneo(Vector2.UP)
@@ -104,11 +117,14 @@ func saltar():
 
 
 func mover_grid(mov: Vector2i, close_hole = true):
+	$Sprite2D.animation = "dig"
+	$Sprite2D.play()
+	
 	var tile_pos := tilemap.local_to_map(tilemap.to_local(global_position))
 
 	global_position = tilemap.to_global(tilemap.map_to_local(tile_pos + mov))
 	tilemap.set_cell(tile_pos + mov, 0, Vector2i(1,0))
-
+	
 	var tween = get_tree().create_tween()
 	tween.tween_property($Sprite2D, "modulate:a", 1.0, 0.3)
 		
@@ -185,6 +201,16 @@ func escarvar():
 		g = 0
 
 func out_floor(direction:Vector2):
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(
+		global_position,
+		global_position + 512 * direction
+	)
+	query.exclude = [self, tilemap]
+	var result = space_state.intersect_ray(query)
+	if result and result["collider"]:
+		return
+	
 	var tile_pos := tilemap.local_to_map(tilemap.to_local(global_position))
 	
 	subterraneo = false
