@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://bl5oxrkxb6aha"]
+
+[ext_resource type="Script" uid="uid://yn2jtsopy3dj" path="res://characters/character.gd" id="1_d0nbq"]
+[ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="2_kh1kd"]
+[ext_resource type="PackedScene" uid="uid://t4o4c2n66rv6" path="res://dialogs/dialog_ui.tscn" id="3_3trtp"]
+[ext_resource type="Script" uid="uid://csbeiv0fpx413" path="res://dialogs/dialog_line.gd" id="4_371p7"]
+[ext_resource type="Script" uid="uid://css0x2oj0bl10" path="res://dialogs/dialog_election.gd" id="5_jvjsl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqr4u"]
+size = Vector2(500, 500)
+
+[sub_resource type="Resource" id="Resource_jfi6v"]
+script = ExtResource("4_371p7")
+text = "hola"
+next_line_id = 1
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_f0775"]
+script = ExtResource("4_371p7")
+id = 1
+text = "adio"
+next_line_id = 2
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[node name="Character" type="Node2D"]
+script = ExtResource("1_d0nbq")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_kh1kd")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_qqr4u")
+
+[node name="Key" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+position = Vector2(204, -171)
+texture = ExtResource("2_kh1kd")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogUi" parent="CanvasLayer" instance=ExtResource("3_3trtp")]
+character_img_left = ExtResource("2_kh1kd")
+dialog_line_array = Array[ExtResource("4_371p7")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775")])
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

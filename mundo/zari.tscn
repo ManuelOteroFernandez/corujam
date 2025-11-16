@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://wudv18jejrx8"]
+[gd_scene load_steps=11 format=3 uid="uid://wudv18jejrx8"]
 
 [ext_resource type="Script" uid="uid://b3i7gf6u261wo" path="res://mundo/scripts/zari.gd" id="1_tjsoc"]
 [ext_resource type="Texture2D" uid="uid://8i3s86v40tjt" path="res://arte/pedal/Posumidle0.png" id="2_m5cxm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://kcc8kcwdk0hf" path="res://arte/pedal/Possum.png" id="4_gn6hb"]
 [ext_resource type="Texture2D" uid="uid://dsnoe53185dtc" path="res://arte/pedal/Possumcaminar1.png" id="5_tdgdb"]
 [ext_resource type="Texture2D" uid="uid://c7tehi4xqu22f" path="res://arte/pedal/Possumcaminar2.png" id="6_co3j3"]
+[ext_resource type="Texture2D" uid="uid://bketokte4v3ur" path="res://arte/pedal/Possum3.png" id="6_n3ldw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjsoc"]
 radius = 112.0
@@ -46,6 +47,30 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_gn6hb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gn6hb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n3ldw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n3ldw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n3ldw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gn6hb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gn6hb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n3ldw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gn6hb")
 }],
 "loop": false,
 "name": &"dig",
@@ -77,7 +102,6 @@ position = Vector2(0, -40)
 sprite_frames = SubResource("SpriteFrames_nmodc")
 animation = &"dig"
 autoplay = "default"
-frame = 1
 frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]

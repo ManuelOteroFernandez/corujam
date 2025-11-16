@@ -31,5 +31,6 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func action():
 	$CanvasLayer/DialogUi.start_dialog()
-	porta1.queue_free()
+	if porta1:
+		porta1.queue_free()
 	

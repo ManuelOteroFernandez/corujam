@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://cj1xj0j4kaqvl"]
+
+[ext_resource type="Script" uid="uid://bslwjd241j4hl" path="res://characters/abridor_puertas.gd" id="1_onara"]
+[ext_resource type="Texture2D" uid="uid://mpunaqhqgwjn" path="res://arte/pedal/MaizOverworldNPC1.png" id="2_dwogm"]
+[ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="3_2ttib"]
+[ext_resource type="PackedScene" uid="uid://t4o4c2n66rv6" path="res://dialogs/dialog_ui.tscn" id="4_bqppe"]
+[ext_resource type="Texture2D" uid="uid://b227wvxaj3swr" path="res://arte/pedal/MaizNPC1.png" id="5_w1r7n"]
+[ext_resource type="Script" uid="uid://csbeiv0fpx413" path="res://dialogs/dialog_line.gd" id="6_yigdi"]
+[ext_resource type="Script" uid="uid://css0x2oj0bl10" path="res://dialogs/dialog_election.gd" id="7_nw3rd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqr4u"]
+size = Vector2(500, 500)
+
+[sub_resource type="Resource" id="Resource_jfi6v"]
+script = ExtResource("6_yigdi")
+text = "hola"
+next_line_id = 1
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_f0775"]
+script = ExtResource("6_yigdi")
+id = 1
+text = "adio"
+next_line_id = 2
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[node name="Character" type="Node2D"]
+script = ExtResource("1_onara")
+
+[node name="Icon" type="Sprite2D" parent="."]
+texture = ExtResource("2_dwogm")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_qqr4u")
+
+[node name="Key" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 2
+position = Vector2(204, -171)
+texture = ExtResource("3_2ttib")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogUi" parent="CanvasLayer" instance=ExtResource("4_bqppe")]
+character_img_right = ExtResource("5_w1r7n")
+dialog_line_array = Array[ExtResource("6_yigdi")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775")])
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
