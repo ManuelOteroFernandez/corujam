@@ -48,7 +48,7 @@ rendering_quadrant_size = 512
 metadata/_edit_lock_ = true
 
 [node name="zari" parent="." node_paths=PackedStringArray("tilemap") groups=["player"] instance=ExtResource("2_2hgfj")]
-position = Vector2(19142, 9415)
+position = Vector2(8897, -295)
 v = 1500.0
 v_salto = 700.0
 g = 3000.0
