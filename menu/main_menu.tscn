@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5jplemebdj04"]
+[gd_scene load_steps=5 format=3 uid="uid://b5jplemebdj04"]
 
 [ext_resource type="Script" uid="uid://b1d2wqloc7jai" path="res://menu/main_menu.gd" id="1_chmv6"]
+[ext_resource type="FontFile" uid="uid://duuiyvl00d62v" path="res://fuenteTexto/Doto/Doto-VariableFont_ROND,wght.ttf" id="2_1x3cv"]
+[ext_resource type="Texture2D" uid="uid://kcc8kcwdk0hf" path="res://arte/pedal/Possum.png" id="3_jc45y"]
+[ext_resource type="Texture2D" uid="uid://8i3s86v40tjt" path="res://arte/pedal/Posumidle0.png" id="4_s8mfa"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,18 +15,18 @@ grow_vertical = 2
 script = ExtResource("1_chmv6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_direction = 2
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 536.0
+offset_top = 504.0
+offset_right = -526.0
+offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.896, 0.8)
 alignment = 1
 
 [node name="BtnStart" type="Button" parent="VBoxContainer"]
@@ -33,6 +36,34 @@ text = "Comenzar"
 [node name="BtnCredits" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Creditos"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 24.0
+offset_right = 899.0
+offset_bottom = 340.0
+theme_override_colors/font_color = Color(0.7529412, 0.48235294, 0.14509805, 1)
+theme_override_colors/font_shadow_color = Color(0.85882354, 0.7490196, 0.6431373, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1x3cv")
+theme_override_font_sizes/font_size = 258
+text = "DEEP"
+
+[node name="Possum" type="Sprite2D" parent="."]
+position = Vector2(576, 376)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_jc45y")
+
+[node name="Posumidle0" type="Sprite2D" parent="."]
+position = Vector2(192, 448)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_s8mfa")
+
+[node name="Posumidle0" type="Sprite2D" parent="Posumidle0"]
+position = Vector2(1536, 0)
+scale = Vector2(-1, 1)
+texture = ExtResource("4_s8mfa")
 
 [connection signal="pressed" from="VBoxContainer/BtnStart" to="." method="_on_btn_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/BtnCredits" to="." method="_on_btn_credits_pressed"]
