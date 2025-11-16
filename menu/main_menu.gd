@@ -1,6 +1,6 @@
 extends Control
 
-@onready var level = preload("res://testing.tscn")
+@onready var level = preload("res://mundo/Level.tscn")
 
 var is_changing_scene = false
 
