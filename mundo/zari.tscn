@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wudv18jejrx8"]
+[gd_scene load_steps=15 format=3 uid="uid://wudv18jejrx8"]
 
 [ext_resource type="Script" uid="uid://b3i7gf6u261wo" path="res://mundo/scripts/zari.gd" id="1_tjsoc"]
 [ext_resource type="Texture2D" uid="uid://8i3s86v40tjt" path="res://arte/pedal/Posumidle0.png" id="2_m5cxm"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://dsnoe53185dtc" path="res://arte/pedal/Possumcaminar1.png" id="5_tdgdb"]
 [ext_resource type="Texture2D" uid="uid://c7tehi4xqu22f" path="res://arte/pedal/Possumcaminar2.png" id="6_co3j3"]
 [ext_resource type="Texture2D" uid="uid://bketokte4v3ur" path="res://arte/pedal/Possum3.png" id="6_n3ldw"]
+[ext_resource type="Texture2D" uid="uid://d0722qttfviro" path="res://arte/pedal/caida02.png" id="7_0fcvu"]
+[ext_resource type="Texture2D" uid="uid://bpvlguxbaaht6" path="res://arte/pedal/caida01.png" id="8_1kics"]
+[ext_resource type="Texture2D" uid="uid://by1dwx6fp1vvs" path="res://arte/pedal/salto01.png" id="9_m8a44"]
+[ext_resource type="Texture2D" uid="uid://dm7ntg1brh06s" path="res://arte/pedal/salto02.png" id="10_lmbnw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjsoc"]
 radius = 112.0
@@ -78,6 +82,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("7_0fcvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1kics")
+}],
+"loop": false,
+"name": &"fall",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_m8a44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lmbnw")
+}],
+"loop": false,
+"name": &"jump",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("5_tdgdb")
 }, {
 "duration": 1.0,
@@ -100,9 +126,8 @@ shape = SubResource("CapsuleShape2D_tjsoc")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -40)
 sprite_frames = SubResource("SpriteFrames_nmodc")
-animation = &"dig"
+animation = &"fall"
 autoplay = "default"
-frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)

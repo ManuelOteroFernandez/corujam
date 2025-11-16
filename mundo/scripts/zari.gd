@@ -49,10 +49,17 @@ func _process(_delta: float) -> void:
 		return
 		
 	if velocity == Vector2.ZERO:
-		$Sprite2D.animation = "default"
+		$Sprite2D.play("default")
 	
+	elif velocity.y > 0:
+		$Sprite2D.play("fall")
+		
 	elif velocity.x != 0:
-		$Sprite2D.animation = "run"
+		$Sprite2D.play("run")
+		
+	elif velocity.y < 0:
+		$Sprite2D.play("jump")
+		
 		
 
 
