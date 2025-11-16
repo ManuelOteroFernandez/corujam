@@ -17,6 +17,3 @@ func change_scene(next_scene:PackedScene):
 func _on_btn_start_pressed() -> void:
 	if not is_changing_scene:
 		change_scene(level)
-
-func _on_btn_credits_pressed() -> void:
-	pass # Replace with function body.

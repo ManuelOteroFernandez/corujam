@@ -33,10 +33,6 @@ alignment = 1
 layout_mode = 2
 text = "Comenzar"
 
-[node name="BtnCredits" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Creditos"
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 280.0
@@ -66,4 +62,3 @@ scale = Vector2(-1, 1)
 texture = ExtResource("4_s8mfa")
 
 [connection signal="pressed" from="VBoxContainer/BtnStart" to="." method="_on_btn_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/BtnCredits" to="." method="_on_btn_credits_pressed"]
