@@ -12,6 +12,7 @@ var _is_moving = false
 var current_platform: Node = null
 var subterraneo = false
 var is_active_double_jump = false
+var can_break_hard = false
 
 
 func _input(event: InputEvent) -> void:
@@ -70,7 +71,7 @@ func check_escavable(direction: Vector2) -> bool:
 	query.exclude = [self]
 	var result = space_state.intersect_ray(query)
 	if result and result["collider"] and result["collider"].is_in_group("escavable"):
-		return true
+		return can_break_terrain(direction)
 	
 	return false
 
@@ -124,6 +125,9 @@ func escarvar():
 				out_floor(Vector2.DOWN)
 			return
 		
+		if not can_break_terrain(Vector2.DOWN): # Falla al escavar
+			return
+		
 		_is_moving = true
 		var tween = get_tree().create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
@@ -136,8 +140,10 @@ func escarvar():
 				out_floor(Vector2.RIGHT)
 			return
 		
+		if not can_break_terrain(Vector2.RIGHT): # Falla al escavar
+			return
+			
 		_is_moving = true
-		
 		var tween = get_tree().create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
 		tween.tween_callback(mover_grid.bind(Vector2i.RIGHT))
@@ -148,8 +154,10 @@ func escarvar():
 				out_floor(Vector2.LEFT)
 			return
 		
-		_is_moving = true
+		if not can_break_terrain(Vector2.LEFT): # Falla al escavar
+			return
 		
+		_is_moving = true
 		var tween = get_tree().create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
 		tween.tween_callback(mover_grid.bind(Vector2i.LEFT))
@@ -160,8 +168,10 @@ func escarvar():
 				out_floor(Vector2.UP)
 			return
 		
-		_is_moving = true
+		if not can_break_terrain(Vector2.UP): # Falla al escavar
+			return
 		
+		_is_moving = true
 		var tween = get_tree().create_tween()
 		tween.tween_property($Sprite2D, "modulate:a", 0.0, 0.3)
 		tween.tween_callback(mover_grid.bind(Vector2i.UP))
@@ -197,3 +207,10 @@ func go_in_subterraneo(direction: Vector2i):
 	tween.tween_callback(mover_grid.bind(direction, false))
 	
 	subterraneo = true
+
+func can_break_terrain(direction: Vector2) -> bool:
+	var tile_pos := tilemap.local_to_map(tilemap.to_local(global_position + 512 * direction))
+	var datos = tilemap.get_cell_tile_data(tile_pos)
+	if datos and datos.get_custom_data("is_hard") and not can_break_hard:
+		return false
+	return true
