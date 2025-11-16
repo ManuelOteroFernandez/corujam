@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://imikr3ovhf7p"]
+[gd_scene load_steps=4 format=4 uid="uid://imikr3ovhf7p"]
 
 [ext_resource type="TileSet" uid="uid://j62veqj8n3nn" path="res://mundo/tileset.tres" id="1_2hgfj"]
 [ext_resource type="PackedScene" uid="uid://wudv18jejrx8" path="res://mundo/zari.tscn" id="2_2hgfj"]
+[ext_resource type="PackedScene" uid="uid://c3jlyv1dq61sq" path="res://powerups/double_jump.tscn" id="3_sfns7"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -19,9 +20,12 @@ tile_set = ExtResource("1_2hgfj")
 occlusion_enabled = false
 rendering_quadrant_size = 512
 
-[node name="zari" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("2_2hgfj")]
-position = Vector2(8692, 4279)
+[node name="zari" parent="." node_paths=PackedStringArray("tilemap") groups=["player"] instance=ExtResource("2_2hgfj")]
+position = Vector2(7894, 2314)
 v = 1500.0
-v_salto = 1100.0
+v_salto = 700.0
 g = 3000.0
 tilemap = NodePath("../Escavable")
+
+[node name="Poweup" parent="." instance=ExtResource("3_sfns7")]
+position = Vector2(1787, 1718)

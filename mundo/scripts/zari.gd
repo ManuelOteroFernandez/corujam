@@ -11,6 +11,7 @@ var _mirando_dereita = true
 var _is_moving = false
 var current_platform: Node = null
 var subterraneo = false
+var is_active_double_jump = false
 
 
 func _input(event: InputEvent) -> void:
@@ -93,7 +94,7 @@ func flipear():
 		
 		
 func saltar():
-	velocity.y = - v_salto
+	velocity.y = -v_salto * 3 if is_active_double_jump else -v_salto
 
 
 func mover_grid(mov: Vector2i, close_hole = true):
