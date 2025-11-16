@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var v_salto: float # Velocidade salto
 @export var g: float # Gravedade
 @export var tilemap: TileMapLayer # Mundo
+@export var porta1: StaticBody2D
 
 @onready var _initial_g = g
 
