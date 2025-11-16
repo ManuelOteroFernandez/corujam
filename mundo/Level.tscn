@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://imikr3ovhf7p"]
+[gd_scene load_steps=6 format=4 uid="uid://imikr3ovhf7p"]
 
 [ext_resource type="TileSet" uid="uid://j62veqj8n3nn" path="res://mundo/tileset.tres" id="1_2hgfj"]
 [ext_resource type="PackedScene" uid="uid://wudv18jejrx8" path="res://mundo/zari.tscn" id="2_2hgfj"]
 [ext_resource type="PackedScene" uid="uid://c3jlyv1dq61sq" path="res://powerups/double_jump.tscn" id="3_sfns7"]
 [ext_resource type="PackedScene" uid="uid://c7o6utciwhq0a" path="res://powerups/break_hard.tscn" id="4_i0nct"]
+[ext_resource type="PackedScene" uid="uid://bju1bb44cpq61" path="res://characters/character.tscn" id="5_5lnrp"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -35,3 +36,6 @@ position = Vector2(2292, 1777)
 
 [node name="Poweup" parent="." instance=ExtResource("4_i0nct")]
 position = Vector2(11268, 16047)
+
+[node name="Character" parent="." instance=ExtResource("5_5lnrp")]
+position = Vector2(8991, 206)

@@ -7,17 +7,22 @@ extends CharacterBody2D
 
 @onready var _initial_g = g
 
+signal interact_signal
+
 var _mirando_dereita = true
 var _is_moving = false
 var current_platform: Node = null
 var subterraneo = false
 var is_active_double_jump = false
 var can_break_hard = false
-
+var can_interact = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("abaixo") and not subterraneo:
 		check_start_subterraneo(Vector2.DOWN)
+		
+	if event.is_action_pressed("interact") and can_interact:
+		interact_signal.emit()
 
 func _physics_process(delta: float) -> void:
 	if not subterraneo:
