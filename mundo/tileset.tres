@@ -1,0 +1,25 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://j62veqj8n3nn"]
+
+[ext_resource type="Texture2D" uid="uid://53jd84ox0tso" path="res://mundo/Tiletierra.png" id="1_y1rfe"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gj7a2"]
+texture = ExtResource("1_y1rfe")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+1:0/next_alternative_id = 2
+1:0/0 = 0
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+2:0/0/custom_data_0 = true
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-256, -256, 256, -256, 256, 256, -256, 256)
+
+[resource]
+tile_size = Vector2i(512, 512)
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "is_hard"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_gj7a2")
