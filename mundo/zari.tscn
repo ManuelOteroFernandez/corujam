@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://wudv18jejrx8"]
+[gd_scene load_steps=17 format=3 uid="uid://wudv18jejrx8"]
 
 [ext_resource type="Script" uid="uid://b3i7gf6u261wo" path="res://mundo/scripts/zari.gd" id="1_tjsoc"]
 [ext_resource type="Texture2D" uid="uid://8i3s86v40tjt" path="res://arte/pedal/Posumidle0.png" id="2_m5cxm"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bpvlguxbaaht6" path="res://arte/pedal/caida01.png" id="8_1kics"]
 [ext_resource type="Texture2D" uid="uid://by1dwx6fp1vvs" path="res://arte/pedal/salto01.png" id="9_m8a44"]
 [ext_resource type="Texture2D" uid="uid://dm7ntg1brh06s" path="res://arte/pedal/salto02.png" id="10_lmbnw"]
+[ext_resource type="AudioStream" uid="uid://d3d2kok0aysin" path="res://sonido/pasos.mp3" id="13_1kics"]
+[ext_resource type="AudioStream" uid="uid://b8e5yqsb4fubk" path="res://sonido/escarvar.mp3" id="14_m8a44"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tjsoc"]
 radius = 112.0
@@ -132,3 +134,13 @@ autoplay = "default"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.2, 0.2)
 position_smoothing_enabled = true
+
+[node name="andar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_1kics")
+volume_db = 3.816
+pitch_scale = 1.81
+
+[node name="escarvar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_m8a44")
+volume_db = 4.771
+pitch_scale = 1.55

@@ -17,6 +17,8 @@ var subterraneo = false
 var is_active_double_jump = false
 var can_break_hard = false
 var can_interact = false
+@onready var andarSonido = $andar
+@onready var escarvarSonido = $escarvar
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("abaixo") and not subterraneo:
@@ -30,6 +32,14 @@ func _physics_process(delta: float) -> void:
 		mover_x()
 		flipear()
 		
+		if escarvarSonido.playing:
+			escarvarSonido.stop()
+		if velocity.x != 0:
+			if not andarSonido.playing:
+				andarSonido.play()
+		else:
+			andarSonido.stop()
+			
 		if not is_on_floor():
 			velocity.y += g * delta
 			excavar_in_air()
@@ -40,6 +50,8 @@ func _physics_process(delta: float) -> void:
 			check_start_subterraneo(Vector2.DOWN)
 		
 	else:
+		if not escarvarSonido.playing:
+				escarvarSonido.play()
 		escarvar()
 		
 
