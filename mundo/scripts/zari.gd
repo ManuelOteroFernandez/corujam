@@ -185,6 +185,16 @@ func escarvar():
 		g = 0
 
 func out_floor(direction:Vector2):
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(
+		global_position + 500 * direction,
+		global_position + 600 * direction
+	)
+	query.exclude = [self]
+	var result = space_state.intersect_ray(query)
+	if not result or not result["collider"]:
+		return
+	
 	var tile_pos := tilemap.local_to_map(tilemap.to_local(global_position))
 	
 	subterraneo = false
