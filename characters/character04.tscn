@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b17385w0imis6"]
+[gd_scene load_steps=10 format=3 uid="uid://b17385w0imis6"]
 
 [ext_resource type="Script" uid="uid://yn2jtsopy3dj" path="res://characters/character.gd" id="1_3w7pd"]
 [ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="2_6bxj4"]
@@ -11,15 +11,22 @@ size = Vector2(500, 500)
 
 [sub_resource type="Resource" id="Resource_jfi6v"]
 script = ExtResource("4_gbbya")
-text = "hola"
+text = " Pasa, he visto algo más arriba, pero no hay camino aquí para subir más."
 next_line_id = 1
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_f0775"]
 script = ExtResource("4_gbbya")
 id = 1
-text = "adio"
+text = "Voy a probar a ir por la tierra blanda que hay abajomás a la derecha."
 next_line_id = 2
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_3w7pd"]
+script = ExtResource("4_gbbya")
+id = 2
+text = "Firmado Cacahuete."
+next_line_id = 3
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [node name="Character" type="Node2D"]
@@ -44,7 +51,7 @@ texture = ExtResource("2_6bxj4")
 
 [node name="DialogUi" parent="CanvasLayer" instance=ExtResource("3_4s132")]
 character_img_left = ExtResource("2_6bxj4")
-dialog_line_array = Array[ExtResource("4_gbbya")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775")])
+dialog_line_array = Array[ExtResource("4_gbbya")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775"), SubResource("Resource_3w7pd")])
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bl5oxrkxb6aha"]
+[gd_scene load_steps=20 format=3 uid="uid://bl5oxrkxb6aha"]
 
 [ext_resource type="Script" uid="uid://yn2jtsopy3dj" path="res://characters/character.gd" id="1_d0nbq"]
+[ext_resource type="Texture2D" uid="uid://mpunaqhqgwjn" path="res://arte/pedal/MaizOverworldNPC1.png" id="2_3trtp"]
 [ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="2_kh1kd"]
 [ext_resource type="PackedScene" uid="uid://t4o4c2n66rv6" path="res://dialogs/dialog_ui.tscn" id="3_3trtp"]
 [ext_resource type="Script" uid="uid://csbeiv0fpx413" path="res://dialogs/dialog_line.gd" id="4_371p7"]
+[ext_resource type="Texture2D" uid="uid://b227wvxaj3swr" path="res://arte/pedal/MaizNPC1.png" id="5_371p7"]
 [ext_resource type="Script" uid="uid://css0x2oj0bl10" path="res://dialogs/dialog_election.gd" id="5_jvjsl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqr4u"]
@@ -11,23 +13,85 @@ size = Vector2(500, 500)
 
 [sub_resource type="Resource" id="Resource_jfi6v"]
 script = ExtResource("4_371p7")
-text = "hola"
+text = "Bienvenido a estas secas tierras, forastero."
 next_line_id = 1
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_f0775"]
 script = ExtResource("4_371p7")
 id = 1
-text = "adio"
+text = "¿Es la primera vez que te adentras por estos parajes?"
 next_line_id = 2
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_jvjsl"]
+script = ExtResource("4_371p7")
+id = 2
+text = "Si, he escuchado que hay cosas “ricas” ahí abajo."
+next_line_id = 3
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_upug8"]
+script = ExtResource("4_371p7")
+id = 3
+text = "Riquezas, pequeño. "
+next_line_id = 4
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_6sgrs"]
+script = ExtResource("4_371p7")
+id = 4
+text = "Con ellas podrás comprar muchas cosas ricas."
+next_line_id = 5
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_ln112"]
+script = ExtResource("4_371p7")
+id = 5
+text = "Si quieres adentrarte a la profundidad de estas tierras,primero deberás saber moverte en ellas."
+next_line_id = 6
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_wmbv5"]
+script = ExtResource("4_371p7")
+id = 6
+text = "Prueba a excavar aquí muchacho. Te aconsejo que usesla tierra a tu favor. Ayúdate de ella para poder saltar."
+next_line_id = 7
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_sns43"]
+script = ExtResource("4_371p7")
+id = 7
+text = "Gracias, señor…"
+next_line_id = 8
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_vxbrd"]
+script = ExtResource("4_371p7")
+id = 8
+text = "Erm… ¿Cómo decía que se llamaba?"
+next_line_id = 9
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_voxc0"]
+script = ExtResource("4_371p7")
+id = 9
+text = " Me conocen como Pólvora, Maiz Von Pólvora.."
+next_line_id = 10
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_0d0is"]
+script = ExtResource("4_371p7")
+id = 10
+text = "Oh… Mu-Mucho gusto entonces señor Pólvora."
+next_line_id = 11
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [node name="Character" type="Node2D"]
 script = ExtResource("1_d0nbq")
 
 [node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("2_kh1kd")
+texture = ExtResource("2_3trtp")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -43,8 +107,8 @@ texture = ExtResource("2_kh1kd")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogUi" parent="CanvasLayer" instance=ExtResource("3_3trtp")]
-character_img_left = ExtResource("2_kh1kd")
-dialog_line_array = Array[ExtResource("4_371p7")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775")])
+character_img_right = ExtResource("5_371p7")
+dialog_line_array = Array[ExtResource("4_371p7")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775"), SubResource("Resource_jvjsl"), SubResource("Resource_upug8"), SubResource("Resource_6sgrs"), SubResource("Resource_ln112"), SubResource("Resource_wmbv5"), SubResource("Resource_sns43"), SubResource("Resource_vxbrd"), SubResource("Resource_voxc0"), SubResource("Resource_0d0is")])
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

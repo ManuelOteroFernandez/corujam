@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://wudv18jejrx8" path="res://mundo/zari.tscn" id="2_2hgfj"]
 [ext_resource type="PackedScene" uid="uid://c3jlyv1dq61sq" path="res://powerups/double_jump.tscn" id="3_sfns7"]
 [ext_resource type="PackedScene" uid="uid://c7o6utciwhq0a" path="res://powerups/break_hard.tscn" id="4_i0nct"]
-[ext_resource type="PackedScene" uid="uid://bju1bb44cpq61" path="res://characters/character.tscn" id="5_5lnrp"]
 [ext_resource type="Texture2D" uid="uid://b28alctkwvjc" path="res://arte/fondo/Layer4.png" id="6_cjewu"]
 [ext_resource type="Texture2D" uid="uid://uy3j2lxc5hu1" path="res://arte/fondo/Layer3.png" id="7_xublk"]
 [ext_resource type="Texture2D" uid="uid://w36rwe47n1fo" path="res://arte/fondo/Layer2.png" id="8_al70p"]
@@ -17,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://c7q5hglqfkqsn" path="res://characters/character05.tscn" id="15_80ynr"]
 [ext_resource type="PackedScene" uid="uid://bl5oxrkxb6aha" path="res://characters/character00.tscn" id="16_t7ml5"]
 [ext_resource type="PackedScene" uid="uid://u1ibc2m482ch" path="res://characters/character06.tscn" id="17_80ynr"]
+[ext_resource type="PackedScene" uid="uid://djekmxvm51yxp" path="res://characters/character07.tscn" id="17_t7ml5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3kkpk"]
 size = Vector2(512, 512)
@@ -103,9 +103,6 @@ motion_mirroring = Vector2(2300, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer"]
 texture = ExtResource("10_xublk")
 
-[node name="Character" parent="." instance=ExtResource("5_5lnrp")]
-position = Vector2(9020, 26)
-
 [node name="Character2" parent="." node_paths=PackedStringArray("porta1") instance=ExtResource("11_al70p")]
 position = Vector2(14684, 1800)
 porta1 = NodePath("../bloqueo")
@@ -149,3 +146,6 @@ position = Vector2(12042, 255)
 
 [node name="Character7" parent="." instance=ExtResource("17_80ynr")]
 position = Vector2(7948, 16637)
+
+[node name="Character" parent="." instance=ExtResource("17_t7ml5")]
+position = Vector2(8160, 264)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7q5hglqfkqsn"]
+[gd_scene load_steps=12 format=3 uid="uid://c7q5hglqfkqsn"]
 
 [ext_resource type="Script" uid="uid://yn2jtsopy3dj" path="res://characters/character.gd" id="1_vaj48"]
 [ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="2_1lds8"]
@@ -11,15 +11,36 @@ size = Vector2(500, 500)
 
 [sub_resource type="Resource" id="Resource_jfi6v"]
 script = ExtResource("4_dmgd8")
-text = "hola"
+text = "¡Auxilio, me desmayo!"
 next_line_id = 1
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_f0775"]
 script = ExtResource("4_dmgd8")
 id = 1
-text = "adio"
+text = " ¿Qué está pasando aquí?"
 next_line_id = 2
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_vaj48"]
+script = ExtResource("4_dmgd8")
+id = 2
+text = "Mi Cacahuete, juntos desde la camada,y ahora… Dónde estará."
+next_line_id = 3
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_1lds8"]
+script = ExtResource("4_dmgd8")
+id = 3
+text = " Yo le buscaré, ¿cómo sabré quien es?"
+next_line_id = 4
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_3nnf7"]
+script = ExtResource("4_dmgd8")
+id = 4
+text = "Es igual a mi… Pero con una pala azul. ¿O era roja?"
+next_line_id = 5
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [node name="Character" type="Node2D"]
@@ -44,7 +65,7 @@ texture = ExtResource("2_1lds8")
 
 [node name="DialogUi" parent="CanvasLayer" instance=ExtResource("3_3nnf7")]
 character_img_left = ExtResource("2_1lds8")
-dialog_line_array = Array[ExtResource("4_dmgd8")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775")])
+dialog_line_array = Array[ExtResource("4_dmgd8")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775"), SubResource("Resource_vaj48"), SubResource("Resource_1lds8"), SubResource("Resource_3nnf7")])
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

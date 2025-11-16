@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpem271s6a1xu"]
+[gd_scene load_steps=15 format=3 uid="uid://cpem271s6a1xu"]
 
 [ext_resource type="Script" uid="uid://bslwjd241j4hl" path="res://characters/abridor_puertas.gd" id="1_hjq83"]
 [ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="2_ob4bv"]
@@ -13,15 +13,43 @@ size = Vector2(500, 500)
 
 [sub_resource type="Resource" id="Resource_jfi6v"]
 script = ExtResource("4_yeedx")
-text = "hola"
+text = "¿Eres Cacahuete? "
 next_line_id = 1
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_f0775"]
 script = ExtResource("4_yeedx")
 id = 1
-text = "adio"
+text = "Si. ¿Y tu eres…?"
 next_line_id = 2
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_x6c3d"]
+script = ExtResource("4_yeedx")
+id = 2
+text = "Pedal, y ando buscando cosas ricas."
+next_line_id = 3
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_yeedx"]
+script = ExtResource("4_yeedx")
+id = 3
+text = "Ah, y Pasa te anda buscando. "
+next_line_id = 4
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_8qb6o"]
+script = ExtResource("4_yeedx")
+id = 4
+text = "Ha llorado tanto que creo que antes se llamaba Uva."
+next_line_id = 5
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_ia54w"]
+script = ExtResource("4_yeedx")
+id = 5
+text = "Estará bien. Dile de mi parte que me espere 5 minutitos, que la escalada hasta aquí ha sido agotadora."
+next_line_id = 6
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [node name="Character" type="Node2D"]
@@ -45,7 +73,7 @@ texture = ExtResource("2_ob4bv")
 
 [node name="DialogUi" parent="CanvasLayer" instance=ExtResource("3_x6c3d")]
 character_img_right = ExtResource("5_x6c3d")
-dialog_line_array = Array[ExtResource("4_yeedx")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775")])
+dialog_line_array = Array[ExtResource("4_yeedx")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775"), SubResource("Resource_x6c3d"), SubResource("Resource_yeedx"), SubResource("Resource_8qb6o"), SubResource("Resource_ia54w")])
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
