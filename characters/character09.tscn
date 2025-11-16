@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://7qoeox0non7l"]
+[gd_scene load_steps=22 format=3 uid="uid://7qoeox0non7l"]
 
-[ext_resource type="Script" uid="uid://bslwjd241j4hl" path="res://characters/abridor_puertas.gd" id="1_mukqj"]
+[ext_resource type="Script" path="res://characters/abridor_puertas.gd" id="1_mukqj"]
 [ext_resource type="Texture2D" uid="uid://b8ejek4v3pffj" path="res://arte/paso.png" id="2_h2uto"]
 [ext_resource type="Texture2D" uid="uid://bc3cgw4yoagn0" path="res://arte/e_icon.png" id="3_e1uen"]
 [ext_resource type="Texture2D" uid="uid://dpupcu7gf2xtk" path="res://arte/todos.png" id="4_h4u2n"]
 [ext_resource type="PackedScene" uid="uid://t4o4c2n66rv6" path="res://dialogs/dialog_ui.tscn" id="4_mukqj"]
+[ext_resource type="Texture2D" uid="uid://bu7slbxx46y0" path="res://arte/pedal/PedalAlHabla.png" id="4_ukqum"]
 [ext_resource type="Script" uid="uid://csbeiv0fpx413" path="res://dialogs/dialog_line.gd" id="6_ukqum"]
 [ext_resource type="Texture2D" uid="uid://djmrdjs887pim" path="res://arte/cacahuete.png" id="7_mukqj"]
 [ext_resource type="Script" uid="uid://css0x2oj0bl10" path="res://dialogs/dialog_election.gd" id="7_tudsq"]
@@ -14,38 +15,66 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqr4u"]
 size = Vector2(1697.5, 712)
 
+[sub_resource type="Resource" id="Resource_tudsq"]
+script = ExtResource("6_ukqum")
+text = "Pedal: Pero que lech…"
+next_line_id = 1
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_8gvuh"]
+script = ExtResource("6_ukqum")
+id = 1
+text = "Todos: ¡Sorpresa!"
+next_line_id = 2
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_174db"]
+script = ExtResource("6_ukqum")
+id = 2
+text = "Pedal - ¿Qué es esto? ¿Y las cosas ricas?"
+next_line_id = 3
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
+[sub_resource type="Resource" id="Resource_e42u5"]
+script = ExtResource("6_ukqum")
+id = 3
+text = "Pedal: Pero más importante, ¿cuándo me habéis adelantado?"
+next_line_id = 4
+metadata/_custom_type_script = "uid://csbeiv0fpx413"
+
 [sub_resource type="Resource" id="Resource_jfi6v"]
 script = ExtResource("6_ukqum")
-text = "Pero lo importante de todo, las verdaderas riquezas,"
-next_line_id = 1
+id = 4
+text = "Todos: (Por el atajo) Pero lo importante de todo, las verdaderas riquezas,"
+next_line_id = 5
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_f0775"]
 script = ExtResource("6_ukqum")
-id = 1
-text = "¡el tesoro, han sido siempre los amigos quehas hecho por el camino!"
-next_line_id = 2
+id = 5
+text = "Todos: ¡el tesoro, han sido siempre los amigos quehas hecho por el camino!"
+next_line_id = 6
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_vaj48"]
 script = ExtResource("6_ukqum")
-id = 2
-text = "..."
-next_line_id = 3
+id = 6
+text = "Pedal: ..."
+next_line_id = 7
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_1lds8"]
 script = ExtResource("6_ukqum")
-id = 3
-text = "…"
-next_line_id = 4
+id = 7
+text = "Todos: …"
+next_line_id = 8
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [sub_resource type="Resource" id="Resource_3nnf7"]
 script = ExtResource("6_ukqum")
-id = 4
-text = "Me marcho a casa… Creo que todavía me quedaba algo de quesito en la nevera…"
-next_line_id = 5
+id = 8
+text = "Pedal: Me marcho a casa… Creo que todavía me quedaba algo de quesito en la nevera…"
+next_line_id = 9
 metadata/_custom_type_script = "uid://csbeiv0fpx413"
 
 [node name="Character" type="Node2D"]
@@ -67,8 +96,9 @@ texture = ExtResource("3_e1uen")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="DialogUi" parent="CanvasLayer" instance=ExtResource("4_mukqj")]
+character_img_left = ExtResource("4_ukqum")
 character_img_right = ExtResource("4_h4u2n")
-dialog_line_array = Array[ExtResource("6_ukqum")]([SubResource("Resource_jfi6v"), SubResource("Resource_f0775"), SubResource("Resource_vaj48"), SubResource("Resource_1lds8"), SubResource("Resource_3nnf7")])
+dialog_line_array = Array[ExtResource("6_ukqum")]([SubResource("Resource_tudsq"), SubResource("Resource_8gvuh"), SubResource("Resource_174db"), SubResource("Resource_e42u5"), SubResource("Resource_jfi6v"), SubResource("Resource_f0775"), SubResource("Resource_vaj48"), SubResource("Resource_1lds8"), SubResource("Resource_3nnf7")])
 
 [node name="Cacahuete" type="Sprite2D" parent="."]
 position = Vector2(304, 7)
