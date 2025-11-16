@@ -19,6 +19,8 @@ var can_break_hard = false
 var can_interact = false
 @onready var andarSonido = $andar
 @onready var escarvarSonido = $escarvar
+@onready var romperPedraSonido = $romperPedra
+@onready var nonRomperPedraSonido = $nonRompePedra
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("abaixo") and not subterraneo:
@@ -262,6 +264,12 @@ func go_in_subterraneo(direction: Vector2i):
 func can_break_terrain(direction: Vector2) -> bool:
 	var tile_pos := tilemap.local_to_map(tilemap.to_local(global_position + 512 * direction))
 	var datos = tilemap.get_cell_tile_data(tile_pos)
+	
+	if datos and datos.get_custom_data("is_hard") and can_break_hard:
+		romperPedraSonido.play()
+		
+	print(datos)	
 	if datos and datos.get_custom_data("is_hard") and not can_break_hard:
+		nonRomperPedraSonido.play()
 		return false
 	return true

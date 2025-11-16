@@ -7,6 +7,10 @@ extends Control
 @onready var ElectionButtonTscn: PackedScene = load("res://dialogs/election_button.tscn")
 @onready var electionContainer = $Panel/MarginContainer/VBoxContainer/HBoxContainer
 
+@onready var falarSonido = $falar
+@onready var falarSonido2 = $falar2
+@onready var falarSonido3 = $falar3
+
 var current_line: DialogLine
 var next_line: DialogLine
 
@@ -25,6 +29,7 @@ func _ready() -> void:
 	$CharacterLeft.texture = character_img_left
 	$CharacterRight.texture = character_img_right
 	
+	
 func hide_dialog():
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate:a", 0, 1)
@@ -32,6 +37,12 @@ func hide_dialog():
 	scale = Vector2.ZERO
 	
 func show_next_line():
+	if (( dialog_line_array.find(current_line) % 3 ) == 0):
+		falarSonido.play()
+	elif (dialog_line_array.find(current_line) % 3 == 1):
+		falarSonido2.play()
+	elif (dialog_line_array.find(current_line) % 3 == 2):
+		falarSonido3.play()
 	if current_line == null:
 		next_line = dialog_line_array[0]
 	

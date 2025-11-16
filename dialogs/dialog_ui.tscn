@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://t4o4c2n66rv6"]
+[gd_scene load_steps=8 format=3 uid="uid://t4o4c2n66rv6"]
 
 [ext_resource type="Script" uid="uid://cvbenhlicq2je" path="res://dialogs/dialog_ui.gd" id="1_mpm8t"]
 [ext_resource type="Texture2D" uid="uid://pk1yjnlftm6q" path="res://icon.svg" id="2_3vfoc"]
 [ext_resource type="Theme" uid="uid://cs5ilfumn5kvs" path="res://dialogs/ui_style.tres" id="3_iyfys"]
+[ext_resource type="AudioStream" uid="uid://csppnhqtg1adh" path="res://sonido/Habla1.wav" id="4_3vfoc"]
+[ext_resource type="AudioStream" uid="uid://doeqkx7wp3bgt" path="res://sonido/Habla2.wav" id="5_dj18s"]
+[ext_resource type="AudioStream" uid="uid://lbeq82yx11os" path="res://sonido/Habla3.wav" id="6_pyyqt"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mpm8t"]
 
@@ -92,5 +95,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
+
+[node name="falar" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3vfoc")
+volume_db = 5.725
+
+[node name="falar2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dj18s")
+
+[node name="falar3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_pyyqt")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
